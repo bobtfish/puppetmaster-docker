@@ -5,4 +5,9 @@ RUN mkdir /var/lib/puppetmaster
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD unicorn.conf /var/lib/puppetmaster/unicorn.conf
 ADD https://raw.githubusercontent.com/puppetlabs/puppet/master/ext/rack/config.ru /var/lib/puppetmaster/config.ru
+ADD run.sh /run.sh
+ADD supervisord-unicorn.conf /etc/supervisor/conf.d/unicorn.conf
+RUN chmod 755 /*.sh
+ENTRYPOINT ["/run.sh"]
+CMD ["run"]
 
