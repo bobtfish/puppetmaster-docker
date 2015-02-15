@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [ "$(hostname)" != "puppetmaster" ];then
-  echo "Please docker run --hostname puppetmaster"
-  exit 1
-fi
-
 # Default argument
 if [ "$1" == "run" ];then
   puppet master --no-daemonize --verbose --confdir /etc/puppetmaster &
