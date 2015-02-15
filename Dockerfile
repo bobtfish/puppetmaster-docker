@@ -10,10 +10,9 @@ ADD run.sh /run.sh
 ADD supervisord-unicorn.conf /etc/supervisor/conf.d/unicorn.conf
 ADD supervisord-nginx.conf /etc/supervisor/conf.d/nginx.conf
 ADD supervisord.conf /etc/supervisor/supervisord.conf
-RUN chmod 755 /*.sh && chown -R puppet: /var/log/supervisor && mkdir /.puppet
+RUN chmod 755 /*.sh && chown -R puppet: /var/log/supervisor
 RUN mkdir /var/run/supervisor && chown puppet: /var/run/supervisor /var/log/nginx
-RUN touch /var/run/supervisord.pid && chown puppet: /var/run/supervisord.pid /.puppet /var/lib/puppet /var/lib/puppetmaster /var/lib/nginx && chmod 644 /var/lib/puppetmaster/config.ru
-RUN ln -s /.puppet/ssl /var/lib/puppetmaster/ssl
+RUN touch /var/run/supervisord.pid && chown puppet: /var/run/supervisord.pid /var/lib/puppet /var/lib/puppetmaster /var/lib/nginx && chmod 644 /var/lib/puppetmaster/config.ru
 USER puppet
 ENTRYPOINT ["/run.sh"]
 CMD ["run"]
