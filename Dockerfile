@@ -5,6 +5,8 @@ RUN mkdir /var/lib/puppetmaster
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD unicorn.conf /etc/puppetmaster/unicorn.conf
 ADD puppet.conf /etc/puppetmaster/puppet.conf
+ADD auth.conf /etc/puppetmaster/auth.conf
+ADD fileserver.conf /etc/puppetmaster/fileserver.conf
 ADD https://raw.githubusercontent.com/puppetlabs/puppet/master/ext/rack/config.ru /var/lib/puppetmaster/config.ru
 ADD run.sh /run.sh
 ADD supervisord-unicorn.conf /etc/supervisor/conf.d/unicorn.conf
